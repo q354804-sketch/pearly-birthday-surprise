@@ -208,8 +208,22 @@ function hearts(n=12){
  }
 }
 $('heartsButton').addEventListener('click',()=>hearts(45));
-$('musicButton').addEventListener('click',()=>{
- alert('Music player ready for your chosen track. To include the Saiyaara female version, add an audio file you have permission to use. Tap-to-play is used because phones block autoplay.');
+
+const song = new Audio('./Saiyaara%20Reprise%20-%20Female%20_%20Full%20Song%20_%20Ahaan%2C%20Aneet%20_%20Tanishk%2C%20Faheem%2C%20Arslan%20_%20Shreya%20_%20Irshad_20261010_090130.mp3');
+song.loop = true;
+
+$('musicButton').addEventListener('click', async () => {
+  try {
+    if (song.paused) {
+      await song.play();
+      $('musicButton').textContent = 'Pause Song 🎵';
+    } else {
+      song.pause();
+      $('musicButton').textContent = 'Play Saiyaara 🎶';
+    }
+  } catch (error) {
+    alert('Song could not play. Please check the MP3 filename in your repository.');
+  }
 });
 </script>
 </body>
