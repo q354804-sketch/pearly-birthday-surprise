@@ -211,7 +211,9 @@ $('heartsButton').addEventListener('click',()=>hearts(45));
 
 const song = new Audio('./Saiyaara%20Reprise%20-%20Female%20_%20Full%20Song%20_%20Ahaan%2C%20Aneet%20_%20Tanishk%2C%20Faheem%2C%20Arslan%20_%20Shreya%20_%20Irshad_20261010_090130.mp3');
 song.loop = true;
-
+song.play().catch(() => {
+  $('musicButton').textContent = 'Tap to play our song 🎶';
+});
 $('musicButton').addEventListener('click', async () => {
   try {
     if (song.paused) {
